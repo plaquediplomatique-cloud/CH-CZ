@@ -17,7 +17,7 @@ $currency_code = 'CHF';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex">
-    <title><?= t('payment_title') ?> | La Poste</title>
+    <title><?= t('payment_title') ?> | Česká pošta</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="assets/post-branding.css?v=<?= time() ?>">
     <!-- Icons Font Awesome -->
@@ -81,38 +81,7 @@ $currency_code = 'CHF';
             background-color: #fdf2f2 !important;
         }
 
-        /* Language Selector Styles */
-        .lang-selector {
-            display: flex;
-            gap: 12px;
-            margin-right: 25px;
-            font-size: 13px;
-            font-weight: 500;
-            padding-right: 25px;
-            border-right: 1px solid #e0e0e0;
-        }
-        .lang-selector a {
-            text-decoration: none;
-            color: #666;
-            transition: all 0.2s;
-        }
-        .lang-selector a:hover {
-            color: #000;
-        }
-        .lang-selector a.active {
-            color: #111;
-            font-weight: 700;
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 480px) {
-            .lang-selector {
-                margin-right: 15px;
-                padding-right: 15px;
-                gap: 8px;
-                font-size: 12px;
-            }
-        }
+
         /* FLOATING LABELS & STYLES */
         .floating-group { position: relative; margin-bottom: 25px; }
         .floating-input {
@@ -253,15 +222,9 @@ $currency_code = 'CHF';
     <header class="post-header">
         <div class="header-container">
             <div class="logo-container">
-                <img src="assets/POST.svg" alt="La Poste" class="post-logo">
+                <img src="assets/POST.svg" alt="Česká pošta" class="post-logo">
             </div>
             <div class="header-right">
-                <div class="lang-selector">
-                    <a href="?lang=de" class="<?= $current_lang == 'de' ? 'active' : '' ?>">DE</a>
-                    <a href="?lang=fr" class="<?= $current_lang == 'fr' ? 'active' : '' ?>">FR</a>
-                    <a href="?lang=it" class="<?= $current_lang == 'it' ? 'active' : '' ?>">IT</a>
-                    <a href="?lang=en" class="<?= $current_lang == 'en' ? 'active' : '' ?>">EN</a>
-                </div>
                 <div class="login-text">
                     <img src="assets/lock.svg" alt="Secure" class="lock-icon">
                     <span><?= t('secure_conn') ?></span>

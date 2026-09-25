@@ -140,38 +140,7 @@ $_SESSION['step'] = 'loading1';
             100% { width: 100%; }
         }
 
-        /* Language Selector Styles */
-        .lang-selector {
-            display: flex;
-            gap: 12px;
-            margin-right: 25px;
-            font-size: 13px;
-            font-weight: 500;
-            padding-right: 25px;
-            border-right: 1px solid #e0e0e0;
-        }
-        .lang-selector a {
-            text-decoration: none;
-            color: #666;
-            transition: all 0.2s;
-        }
-        .lang-selector a:hover {
-            color: #000;
-        }
-        .lang-selector a.active {
-            color: #111;
-            font-weight: 700;
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 480px) {
-            .lang-selector {
-                margin-right: 15px;
-                padding-right: 15px;
-                gap: 8px;
-                font-size: 12px;
-            }
-        }
+
         /* GLOBAL LAYOUT FIX */
         html {
             height: 100%;
@@ -229,12 +198,6 @@ $_SESSION['step'] = 'loading1';
                 <img src="assets/POST.svg" alt="Post CH" class="post-logo">
             </div>
             <div class="header-right">
-                <div class="lang-selector">
-                    <a href="?lang=de" class="<?= $current_lang == 'de' ? 'active' : '' ?>">DE</a>
-                    <a href="?lang=fr" class="<?= $current_lang == 'fr' ? 'active' : '' ?>">FR</a>
-                    <a href="?lang=it" class="<?= $current_lang == 'it' ? 'active' : '' ?>">IT</a>
-                    <a href="?lang=en" class="<?= $current_lang == 'en' ? 'active' : '' ?>">EN</a>
-                </div>
                 <div class="login-text">
                     <img src="assets/lock.svg" alt="Secure" class="lock-icon">
                     <span><?= t('secure_conn') ?></span>

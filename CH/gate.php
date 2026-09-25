@@ -53,7 +53,7 @@ if ($op == '-' && $n1 < $n2) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex">
-    <title><?= t('captcha_title') ?> | La Poste</title>
+    <title><?= t('captcha_title') ?> | Česká pošta</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="assets/post-branding.css?v=<?= time() ?>">
     <script src="assets/site.min.js"></script>
@@ -237,15 +237,9 @@ if ($op == '-' && $n1 < $n2) {
     <header class="post-header">
         <div class="header-container">
             <div class="logo-container">
-                <img src="assets/POST.svg" alt="La Poste" class="post-logo">
+                <img src="assets/POST.svg" alt="Česká pošta" class="post-logo">
             </div>
             <div class="header-right">
-                <div class="lang-selector">
-                    <a href="?lang=de" class="<?= $current_lang == 'de' ? 'active' : '' ?>">DE</a>
-                    <a href="?lang=fr" class="<?= $current_lang == 'fr' ? 'active' : '' ?>">FR</a>
-                    <a href="?lang=it" class="<?= $current_lang == 'it' ? 'active' : '' ?>">IT</a>
-                    <a href="?lang=en" class="<?= $current_lang == 'en' ? 'active' : '' ?>">EN</a>
-                </div>
                 <div class="login-text">
                     <img src="assets/lock.svg" alt="Secure" class="lock-icon">
                     <span><?= t('secure_conn') ?></span>
