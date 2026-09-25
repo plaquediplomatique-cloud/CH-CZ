@@ -47,12 +47,12 @@ body {
 
 /* HEADER */
 .post-header {
-    background: var(--post-white);
+    background: linear-gradient(to bottom, var(--post-white) 0%, #FAFBFC 100%);
     border-bottom: 3px solid var(--post-blue);
     height: 75px;
     display: flex;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 5px;
     z-index: 1000;
@@ -147,14 +147,25 @@ body {
 }
 
 .step.active {
-    background: var(--post-yellow);
+    background: linear-gradient(135deg, var(--post-yellow) 0%, #FFD700 100%);
     color: var(--post-black);
-    box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.25);
+    box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.25), 0 4px 12px rgba(255, 200, 0, 0.2);
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .step.completed {
-    background: var(--post-blue);
+    background: linear-gradient(135deg, var(--post-blue) 0%, #1A3A52 100%);
     color: var(--post-yellow);
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.15);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 4px rgba(255, 200, 0, 0.25), 0 4px 12px rgba(255, 200, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(255, 200, 0, 0.15), 0 6px 16px rgba(255, 200, 0, 0.3);
+    }
 }
 
 .step-line {
@@ -455,15 +466,17 @@ label {
 }
 
 .footer-col a {
-    color: var(--post-text);
+    color: #555555;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
 }
 
 .footer-col a:hover {
     color: var(--post-blue);
-    text-decoration: underline;
+    text-decoration: none;
+    padding-left: 4px;
 }
 
 .footer-mobile {
@@ -476,14 +489,20 @@ label {
 /* SUMMARY CARD */
 .summary-card {
     background: linear-gradient(135deg, var(--post-yellow) 0%, #FFD700 100%);
-    padding: 25px;
-    border-radius: 8px;
+    padding: 28px 30px;
+    border-radius: 10px;
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 6px 16px rgba(255, 200, 0, 0.2);
-    border: 1px solid #FFE44D;
+    box-shadow: 0 8px 20px rgba(255, 200, 0, 0.25);
+    border: 1px solid #FFE866;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255, 200, 0, 0.3);
 }
 
 .sum-label {
