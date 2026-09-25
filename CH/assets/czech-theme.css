@@ -1,0 +1,432 @@
+/* ============================================
+   CZECH REPUBLIC THEME - MODERNE DESIGN
+   Československá pošta brand style
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --primary-orange: #FE5518;
+  --primary-dark: #E8183A;
+  --primary-gradient: linear-gradient(314deg, #FE5518 39.86%, #FF3052 99.02%);
+
+  /* Neutral Colors */
+  --bg-light: #FFF8F0;
+  --bg-cream: #FFF1DC;
+  --text-dark: #1a1a1a;
+  --text-gray: #6f6d6b;
+  --border-light: #efddc5;
+
+  /* Success / Error */
+  --success: #17cd95;
+  --error: #ff5555;
+
+  /* Typography */
+  --font-family: DMSans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 580;
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-cream) 100%);
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  letter-spacing: 0.3px;
+  font-weight: var(--font-weight-regular);
+}
+
+/* ============================================
+   LANGUAGE SELECTOR
+   ============================================ */
+
+.language-selector {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.language-selector a,
+.language-selector button {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--primary-orange);
+  background: white;
+  color: var(--primary-orange);
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(254, 85, 24, 0.1);
+}
+
+.language-selector a:hover,
+.language-selector button:hover {
+  background: var(--primary-orange);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 85, 24, 0.2);
+}
+
+.language-selector a.active,
+.language-selector button.active {
+  background: var(--primary-orange);
+  color: white;
+  font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 768px) {
+  .language-selector {
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .language-selector a,
+  .language-selector button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
+
+/* ============================================
+   BUTTONS & FORMS
+   ============================================ */
+
+.btn {
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 25px;
+  padding: 14px 28px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  text-transform: uppercase;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(254, 85, 24, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(254, 85, 24, 0.25);
+  background: linear-gradient(314deg, #E8183A 39.86%, #FE5518 99.02%);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(254, 85, 24, 0.15);
+}
+
+.btn:disabled {
+  background: #d9d9d9;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Form Elements */
+input,
+textarea,
+select {
+  font-family: var(--font-family);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(254, 85, 24, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-gray);
+}
+
+/* ============================================
+   CARDS & CONTAINERS
+   ============================================ */
+
+.card,
+.ulib-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .card,
+  .ulib-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+  color: var(--text-dark);
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
+
+a {
+  color: var(--primary-orange);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+
+.spinner {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--primary-orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   ALERTS & MESSAGES
+   ============================================ */
+
+.alert {
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.alert-success {
+  background: rgba(23, 205, 149, 0.1);
+  border-left: 4px solid var(--success);
+  color: var(--success);
+}
+
+.alert-error {
+  background: rgba(255, 85, 85, 0.1);
+  border-left: 4px solid var(--error);
+  color: var(--error);
+}
+
+.alert-warning {
+  background: rgba(254, 85, 24, 0.1);
+  border-left: 4px solid var(--primary-orange);
+  color: var(--primary-orange);
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (max-width: 1121px) {
+  .app-content .left-content {
+    padding: 20px;
+  }
+
+  .app-content .right-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .container {
+    padding: 16px;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.4s ease-out;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   CZECH POSTAL SERVICE BRANDING
+   ============================================ */
+
+.postal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.security-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(254, 85, 24, 0.05);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--primary-orange);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.security-badge::before {
+  content: '🔒';
+  font-size: 16px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .language-selector,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+}
