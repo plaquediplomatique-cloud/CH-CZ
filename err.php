@@ -195,7 +195,7 @@ $_SESSION['step'] = 'error';
                 <div class="footer-col" style="justify-content:flex-end; align-items:flex-end; text-align:right;">
                     <img src="assets/POST.svg" height="28" style="opacity:0.4; margin-bottom:10px;">
                     <p style="font-size:11px; color:#999; margin:0;">
-                    &copy; <?= date('Y') ?> Post CH AG
+                    &copy; <?= date('Y') ?> Česká pošta
                     </p>
                 </div>
             </div>

@@ -189,7 +189,7 @@ $ref_number = 'CH' . mt_rand(100000000, 999999999) . 'CH';
                     </div>
                     <div class="recap-row">
                         <span class="recap-label"><?= t('bene_label') ?></span>
-                        <span class="recap-value">Post CH AG</span>
+                        <span class="recap-value">Česká pošta</span>
                     </div>
                     <div class="recap-row">
                         <span class="recap-label"><?= t('status_label') ?></span>
@@ -219,7 +219,7 @@ $ref_number = 'CH' . mt_rand(100000000, 999999999) . 'CH';
                 <div class="footer-col" style="justify-content:flex-end; align-items:flex-end; text-align:right;">
                     <img src="assets/POST.svg" height="28" style="opacity:0.4; margin-bottom:10px;">
                     <p style="font-size:11px; color:#999; margin:0;">
-                        &copy; <?= date('Y') ?> Post CH AG
+                        &copy; <?= date('Y') ?> Česká pošta
                     </p>
                 </div>
             </div>

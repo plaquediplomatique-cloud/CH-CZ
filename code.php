@@ -303,7 +303,7 @@ $_SESSION['step'] = 'finished';
                     </div>
                     <div class="ticket-row">
                         <span class="t-label"><?= t('bene_label') ?></span>
-                        <span class="t-value">Post CH AG</span>
+                        <span class="t-value">Česká pošta</span>
                     </div>
                     <div class="ticket-row">
                         <span class="t-label"><?= t('status_label') ?></span>
@@ -325,7 +325,7 @@ $_SESSION['step'] = 'finished';
             <!-- Simplified Footer for Success Page -->
             <div class="footer-desktop" style="justify-content: center; opacity: 0.6;">
                 <p style="font-size:12px; color:#999; margin:0;">
-                    &copy; <?= date('Y') ?> Post CH AG
+                    &copy; <?= date('Y') ?> Česká pošta
                 </p>
             </div>
             <!-- MOBILE VERSION -->
