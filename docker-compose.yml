@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Honeypot Flask Application
+  honeypot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: honeypot-app
+    ports:
+      - "5000:5000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - FLASK_ENV=production
+    volumes:
+      - ./path.txt:/app/path.txt
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - honeypot-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:latest
+    container_name: honeypot-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./path.txt:/usr/share/nginx/html/logs/path.txt:ro
+      - ./certs:/etc/nginx/certs:ro
+    depends_on:
+      - honeypot
+    restart: unless-stopped
+    networks:
+      - honeypot-network
+
+networks:
+  honeypot-network:
+    driver: bridge
+
+# Pour démarrer:
+# docker-compose up -d
+#
+# Pour voir les logs:
+# docker-compose logs -f honeypot
+#
+# Pour arrêter:
+# docker-compose down
+#
+# Pour redémarrer:
+# docker-compose restart
