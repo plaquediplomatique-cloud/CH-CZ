@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 200 40">
+  <!-- Verified by Visa -->
+  <g transform="translate(0,0)">
+     <path fill="#1565C0" d="M10,0h30v40h-30z"/>
+     <text x="5" y="25" font-family="Arial" font-size="10" fill="#1565C0" font-weight="bold">Visa</text>
+     <rect x="0" y="0" width="50" height="40" fill="none" stroke="#ddd"/>
+  </g>
+  <!-- Mock up for standard usage, replacing with generic secure icons if specific vectors are too complex for inline -->
+  <rect x="0" y="0" width="200" height="40" fill="#fff"/>
+  <text x="10" y="25" font-family="Arial, sans-serif" font-size="14" fill="#666" font-weight="bold">Visa Secure  |  Mastercard ID Check</text>
+</svg>
